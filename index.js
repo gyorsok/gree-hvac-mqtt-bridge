@@ -30,11 +30,12 @@ const deviceOptions = {
   onStatus: (deviceModel) => {
     client.publish(mqttTopicPrefix + '/temperature/get', deviceModel.props[commands.temperature.code].toString());
     client.publish(mqttTopicPrefix + '/fanspeed/get', commands.fanSpeed.value.getKeyByValue(deviceModel.props[commands.fanSpeed.code]).toString());
-    client.publish(mqttTopicPrefix + '/swinghor/get', commands.swingHor.value.getKeyByValue(deviceModel.props[commands.swingHor.code]).toString());
+    client.publish(mqttTopicPrefix + '/swinghor/get', deviceModel.props[commands.swingHor.code].toString());
     client.publish(mqttTopicPrefix + '/swingvert/get', commands.swingVert.value.getKeyByValue(deviceModel.props[commands.swingVert.code]).toString());
     client.publish(mqttTopicPrefix + '/power/get', commands.power.value.getKeyByValue(deviceModel.props[commands.power.code]).toString());
     client.publish(mqttTopicPrefix + '/health/get', commands.health.value.getKeyByValue(deviceModel.props[commands.health.code]).toString());
     client.publish(mqttTopicPrefix + '/powersave/get', commands.energySave.value.getKeyByValue(deviceModel.props[commands.energySave.code]).toString());
+    // console.log(JSON.stringify(this.device.props, null, 4));
     client.publish(mqttTopicPrefix + '/lights/get', commands.lights.value.getKeyByValue(deviceModel.props[commands.lights.code]).toString());
     client.publish(mqttTopicPrefix + '/quiet/get', commands.quiet.value.getKeyByValue(deviceModel.props[commands.quiet.code]).toString());
     client.publish(mqttTopicPrefix + '/blow/get', commands.blow.value.getKeyByValue(deviceModel.props[commands.blow.code]).toString());
